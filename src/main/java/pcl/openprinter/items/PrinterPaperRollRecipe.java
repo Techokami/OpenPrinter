@@ -12,21 +12,16 @@ public class PrinterPaperRollRecipe implements IRecipe
     @Override
     public boolean matches (InventoryCrafting inventory, World world) {
         if (inventory.getSizeInventory() >= 9)
-            return matches(inventory, 0, 0)
-                || matches(inventory, 1, 0)
-                || matches(inventory, 0, 1)
-                || matches(inventory, 1, 1);
-        else if (inventory.getSizeInventory() >= 4)
             return matches(inventory, 0, 0);
         else
             return false;
     }
 
     private boolean matches (InventoryCrafting inventory, int offsetX, int offsetY) {
-        ItemStack stack00 = inventory.getStackInRowAndColumn(0 + offsetX, 0 + offsetY);
-        ItemStack stack01 = inventory.getStackInRowAndColumn(1 + offsetX, 0 + offsetY);
-        ItemStack stack10 = inventory.getStackInRowAndColumn(0 + offsetX, 1 + offsetY);
-        ItemStack stack11 = inventory.getStackInRowAndColumn(1 + offsetX, 1 + offsetY);
+        ItemStack stack00 = inventory.getStackInRowAndColumn(1 + offsetX, 0 + offsetY);
+        ItemStack stack01 = inventory.getStackInRowAndColumn(0 + offsetX, 1 + offsetY);
+        ItemStack stack10 = inventory.getStackInRowAndColumn(2 + offsetX, 1 + offsetY);
+        ItemStack stack11 = inventory.getStackInRowAndColumn(1 + offsetX, 2 + offsetY);
 
         if (stack00 == null || stack01 == null || stack10 == null || stack11 == null)
             return false;
